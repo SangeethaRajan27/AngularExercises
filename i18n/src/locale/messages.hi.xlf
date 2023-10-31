@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="6833225150950468881" datatype="html">
+        <source>Under Costruction</source>
+        <target>Nirmaan ho raha hai</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+        <note priority="1" from="description"> Title for the under construction card</note>
+        <note priority="1" from="meaning">Card header </note>
+      </trans-unit>
+      <trans-unit id="4997312187727319539" datatype="html">
+        <source>This page is under construction</source>
+        <target>Yeh panna ban raha hai</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <note priority="1" from="description"> A description for the under construction card</note>
+        <note priority="1" from="meaning">Card header </note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

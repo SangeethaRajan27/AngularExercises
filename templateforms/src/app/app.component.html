@@ -1,0 +1,39 @@
+<!-- Template driven form must use NgForm attribute/directive
+  In previous example we give inside some brackects ngModel => we were creating that model and defining it
+  but here model itself it created by the template as form in angular
+  userData=>is the object that acts as a modal which angular has to create;automatically created by angular
+  It will have fields like firstname,lastname,joindate and salary
+  NgForm=>built-in class
+  <form #userData="NgForm"=>transalte like this var userData =new ngform();
+ -->
+
+<b>Enter user's data</b><br />
+<form #userData="ngForm" (ngSubmit)="addUser(userData)">
+
+  First name <input type="text" name="firstname" ngModel /><br />
+  Last name <input type="text" name="lastname" ngModel /><br />
+  Join date <input type="date" name="joindate" ngModel /><br />
+  Salary <input type="number" name="salary" ngModel /><br />
+  <input type="submit" value="Add User"/>
+
+</form>
+<b>User Details</b>
+<table style="border: 4px;border-style:inset;border-color: blueviolet;">
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Join date</th>
+      <th>Salary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of userList">
+      <td>{{ user.firstname }}</td>
+      <td>{{ user.lastname }}</td>
+      <td>{{ user.joindate }}</td>
+      <td>{{ user.salary }}</td>
+    </tr>
+  </tbody>
+</table>
+<router-outlet></router-outlet>

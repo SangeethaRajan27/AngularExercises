@@ -1,0 +1,130 @@
+<b>Select themes</b>
+<select size="1" [(ngModel)]="themeName">
+  <option value="forest">Forest theme</option>
+  <option value="ocean">Ocean theme</option>
+  <option value="cloud">Cloud theme</option>
+</select>
+<div [class]="themeName"> <!--"themeName"is the name of the model-- this should be defined inside class ;
+  On runtime the value of themeName replaced with forest; whaterver the class definition i give in css that will be applied  -->
+Oceans, forests, clouds
+</div>
+
+<select size="1" [(ngModel)]="color">
+  <option value="violet">Violet</option>
+  <option value="indigo"> Indigo</option>
+  <option value="blue">Blue</option>
+  <option value="green">Green</option>
+  <option value="yellow">Yellow</option>
+  <option value="orange">Orange</option>
+  <option value="red">Red</option>
+
+</select>
+<input type="text" [class]="color"/><br /><br />
+<div [class]="color">
+</div><br/>
+
+<!--STYLE BINDING(EXAMPLE1)-->
+<b>Set the size</b>&nbsp;&nbsp;<input type="number" min="100" max="500" step="20" [(ngModel)]="size"/>
+
+<div [class]="themeName" [style.max-width.px]="size" [style.max-height.px]="size"></div><!--example of style binding-->
+<!--"step" means it increases by 20 and display-->
+
+<!--STYLE BINDING(EXAMPLE2)-->
+<select size="1" [(ngModel)]="applycolor">
+  <option value="violet">Violet</option>
+  <option value="indigo"> Indigo</option>
+  <option value="blue">Blue</option>
+  <option value="green">Green</option>
+  <option value="yellow">Yellow</option>
+  <option value="orange">Orange</option>
+  <option value="red">Red</option>
+</select><br/>
+<input type="text" [style.color]="applycolor" value="Unknown"/><br/>
+<!-- value of model will decide the state of the tag -->
+
+<!--PROPERTY BINDING
+  change the property of tag depending upon current value of the model
+-->
+<form name="myform" (submit)="sendData()">
+First name<input type="text" name="firstname" [(ngModel)]="udata.firstname" (ngModelChange)="checkData()"/><br/>
+<label style="color: red" *ngIf="this.udata.firstname.length==0">First name should not be empty</label><br />
+<!-- (ngModelChange)=>whenever modal changes this function will be called ;if we use (change)=>first model gets updated then only view changes-->
+Last name<input type="text" name="lastname" [(ngModel)]="udata.lastname"/><br/>
+<label style="color: red" *ngIf="this.udata.lastname.length==0">First name should not be empty</label><br />
+<input type="checkbox" name="enabledisable" [(ngModel)]="enableDisable"/>Agree to T & C <br/>
+<input type="button" value="Save" name="savedata"
+(click)="saveData($event)"/><!--EVENT BINDING; ($event)IS optional; same as click in javascript-->
+<input type="button" value="Reset" [disabled]="!(firstname.length >0 || lastname.length >0)"/>
+<input type="button" value="Reset" [disabled]="!(firstname || lastname)"/><!--it return 0 or 1=>1;-->
+<input type="submit" value="Submit form"/>
+</form>
+
+<b>List of users<br /></b>
+<li *ngFor="let user of userslist">{{user.firstname}} &nbsp; &nbsp; {{user.lastname}}</li><br />
+<table border="4px">
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of userslist">
+      <td>{{ user.firstname }}</td>
+      <td>{{ user.lastname }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<form>
+  Company name<input type="text" name="comapnyname" [(ngModel)]="this.udata.company"/><br />
+  Customer location<input type="text" name="location"  [(ngModel)]="this.udata.location"/><br />
+
+</form>
+
+<!-- <ng-container *ngIf="this.udata.company.length !=0 &&
+this.udata.location.length !=0; then Correct; else notCorrect">
+
+</ng-container>
+<ng-template #Correct>
+<div>
+  <b>Inputs are correct</b>
+</div>
+</ng-template>
+<ng-template #notCorrect>
+<div>
+  <b>Location and company are mandatory</b>
+</div>
+</ng-template> -->
+
+<ng-template [ngIf]="this.udata.company.length !=0 && this.udata.location.length !=0" [ngIfElse]="notCorrect">
+<b>Inputs are correct</b>
+</ng-template>
+<ng-template #notCorrect>
+  <b>Location and company are mandatory</b>
+</ng-template>
+<br />
+
+<!-- SWITCH CASE -->
+<select [(ngModel)]="statename" name="selectedState">
+  <option value="TN">TamilNadu</option>
+  <option value="AP">Andhra Pradesh</option>
+  <option value="KA">Karnataka</option>
+  <option value="UP">Uttar Pradesh</option>
+</select>
+<!-- [ngSwitch] is used for conditional rendering in Angular templates. 
+It's often used in conjunction with *ngSwitchCase and *ngSwitchDefault to conditionally 
+display content based on the value of an expression. -->
+<div [ngSwitch]="statename">
+  <ul *ngSwitchCase="'TN'"><li>Chennai</li><li>Andhra</li><li>ChennaiCoimbatore</li></ul>
+  <ul *ngSwitchCase="'AP'"><li>Vijayawada</li><li>Visakhapatnam</li><li>Tirupati</li></ul>
+  <ul *ngSwitchCase="'KA'"><li>Bengaluru</li><li>Mangaluru</li><li>Chitradurga</li></ul>
+  <ul *ngSwitchCase="'UP'"><li>Varanasi</li><li>Lucknow</li><li>Agra</li></ul>
+</div>
+
+<!-- ng-template=>portion of the page nothing but subview -->
+<!--IMPORTANT NOTE=>We should give name for every tags like input,everything etc..-->
+<!-- *ngFor => same as for of loop in javascript ;bulit in property in angular;also called as deructive-->
+<!-- iterate through an array retrieve the element and display it -->
+<!--What binding is between the unordered list and userlist array is =>data binding (one way binding)-->
+<router-outlet></router-outlet>

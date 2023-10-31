@@ -1,0 +1,52 @@
+First Name<input type="text" [(ngModel)]="firstName" /><br>
+Last Name<input type="text" [(ngModel)]="lastName" /><br><br>
+<select [(ngModel)]="selectedState" name="selectedState">
+  <option value="TamilNadu">TamilNadu</option>
+  <option value="Telangana">Telangana</option>
+  <option value="Karnataka">Karnataka</option>
+  <option value="Kashmir">Jammu & Kashmir</option>
+</select>
+
+<div *ngIf="selectedState === 'TamilNadu'">
+  <p>Enter City :</p>
+  <select size="1" [(ngModel)]="selectedCity" name="selectedCity">
+    <option value="Chennai">Chennai</option>
+    <option value="Madurai">Madurai</option>
+    <option value="Salem">Salem</option>
+    <option value="Erode">Erode</option>
+  </select>
+</div>
+
+<div *ngIf="selectedState === 'Telangana'">
+  <p>Enter City :</p>
+  <select size="1" [(ngModel)]="selectedCity" name="selectedCity">
+    <option value="Karimnagar">Karimnagar</option>
+    <option value="Medak">Medak</option>
+    <option value="Warangal">Warangal</option>
+    <option value="Devarakonda">Devarakonda</option>
+  </select>
+</div>
+
+<!-- <p>Enter State :</p>
+<select size="1" [(ngModel)] =states name="selectedState">
+  <option value="TamilNadu">TamilNadu</option>
+  <option value="Telagana">Telagana</option>
+  <option value="Karnataka">Karnataka</option>
+  <option value="Kashmir">Jammu & Kashmir</option>
+</select><BR><br>
+<p>Enter City :</p>
+<select *ngIf="states === 'TamilNadu'" size="1"[(ngModel)]=states>
+  <option value="Chennai">Chennai</option>
+  <option value="Madurai">Madurai</option>
+  <option value="Salem">Salem</option>
+  <option value="Erode">Erode</option>
+</select><br><br>
+<select *ngIf="states === 'Telagana'" size="1"[(ngModel)]=states>
+  <option value="Karimnagar">Chennai</option>
+  <option value="Medak">Madurai</option>
+  <option value="Warangal">Salem</option>
+  <option value="Devarakonda">Erode</option>
+</select><br><br> -->
+<input type="submit" value="Save" [disabled]="!(firstName.length >0 && lastName.length > 0
+&& states.length > 0)" />
+<router-outlet></router-outlet>

@@ -1,0 +1,17 @@
+<b>User name Mr/Ms {{firstname}} &nbsp; {{lastname}}</b><br>
+<!-- {{}} it is interpolation
+    One way binding from Model to View
+ -->
+<!-- form tag remove in angular it is not actually supported -->
+    First name <input type="text" 
+    [(ngModel)]="firstname"/><br>
+    <!--1METHOD=>{{}} interpolationin this way to we can achievie one way binding;;ngmodel is view to model binding-->
+    <!--2METHOD=>ngModel is a attribute defined inside class called "formsModule" we need to import in app.module.ts
+        2way binding means whatever changes made it will update in model too and viceversa...
+    -->
+    Last name <input type="text" value={{lastname}} [(ngModel)]="lastname" /><br>
+    <input type="submit" value="Save" />
+
+<p>registration works!</p>
+
+

@@ -1,0 +1,45 @@
+<!--Reactive forms makes use of a built-in class called
+  FormGroup. A FormGroup is a  collection of form elements.
+  ngModel is not used.
+-->
+<b>Enter user's data</b><br />
+<form [formGroup]="userForm" (ngSubmit)="addUser()">
+
+  First name <input type="text" name="firstname" formControlName="firstName" /><br />
+  <div *ngIf="userForm.controls.firstName.invalid && userForm.controls.firstName.touched">
+    <p *ngIf="userForm.controls.firstName.errors.required" style="color: red;">First name is required.</p>
+    <p *ngIf="userForm.controls.firstName.errors.minlength" style="color: red;">First name must be at least 5 characters.</p>
+  </div>
+  Last name <input type="text" name="lastname" formControlName="lastName"/><br />
+  Join date <input type="date" name="joindate" min="2020-03-01" max="2023-10-20" formControlName="joinDate"/><br />
+  Salary <input type="number" name="salary" formControlName="salary"/><br />
+  <input type="submit" value="Add User" [disabled]="!userForm.valid" />
+  <button (click)="update()" *ngIf="isupdate">Update</button>
+
+</form>
+<b>User Details</b>
+<table border="4px">
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Join date</th>
+      <th>Salary</th>
+      <th>Update & Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of userList;let i = index">
+      <td>{{ user.firstName }}</td>
+      <td>{{ user.lastName }}</td>
+      <td>{{ user.joinDate }}</td>
+      <td>{{ user.salary }}</td>
+      <td>
+        <button (click)="edit(user,i)">Edit</button>
+        <button (click)="deleteUser(i)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<router-outlet></router-outlet>

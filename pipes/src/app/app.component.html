@@ -1,0 +1,38 @@
+First Name{{this.udata.firstname | uppercase}}<br />
+Last Name{{this.udata.lastname | uppercase}}<br />
+
+{{this.udata.firstname + ' ' + this.udata.lastname}}<br />
+
+First Name{{this.udata.firstname | lowercase}}<br />
+Last Name{{this.udata.lastname | lowercase}}<br />
+Full Name{{this.udata.firstname + this.udata.lastname | slice:4:15}}<br />
+
+Join Date {{this.udata.dateOfJoining | date}}<br /> <!--Display the date as it is-->
+Join Date {{this.udata.dateOfJoining | date:'fullDate'}}<br />
+Join Date {{this.udata.dateOfJoining | date:'shortDate'}}<br />
+
+Full Time {{this.udata.dateOfJoining | date:'fullTime'}}<br />
+Short Time {{this.udata.dateOfJoining | date:'shortTime'}}<br />
+
+Date Format {{this.udata.dateOfJoining | date:'medium'}}<br />
+Date Format {{this.udata.dateOfJoining | date:'dd-M-yy'}}<br />
+Full Date Format {{this.udata.dateOfJoining | date:'dd-M-yyyy'}}<br />
+Time Format {{this.udata.dateOfJoining | date:'h:m:ss a z'}}<br />
+
+Currency {{this.udata.salary | currency}}<br />
+INR Currency {{this.udata.salary | currency:'INR'}}<br />
+GBP Currency {{this.udata.salary | currency:'GBP'}}<br />
+Euro Currency {{this.udata.salary | currency:'EUR'}}<br />
+
+
+
+
+
+
+
+
+
+<!-- | is the pipe symbol ;pipe does not modify the value only changes for the output 
+  slice pipe is use to split the string ;slice:4 or u can give range also slice:4:15
+-->
+<router-outlet></router-outlet>
